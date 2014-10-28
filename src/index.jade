@@ -1,0 +1,452 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
+    title PolymerFun
+
+    link(rel='stylesheet', type='text/css', href='http://fonts.googleapis.com/css?family=Open+Sans:400,300')
+    link(rel='stylesheet', type='text/css', href='http://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet')
+    link(rel='stylesheet', type='text/css', href='build/build.css')
+
+    script(src='lib/platform/platform.js')
+    script(src='lib/polymer/polymer.js')
+    link(rel='import', href='../src/doge-book/doge-app.html')
+
+    style
+      | core-header-panel { display: none !important; }
+  body
+    a(href='https://www.polymer-project.org/', style='position: fixed; top: 10px; right: 10px; z-index: 999;', target="_blank")
+      img(src='images/p-logo.svg', class='logo small')
+
+    article
+
+      // intro page
+      section(class='emerald', data-bespoke-fx-transition='glue')
+        div
+          img(src='images/p-logo.svg', class='logo')
+          br
+          br
+          h1
+            span 
+              | A 
+              del Short
+              | 
+              ins Cheesy
+              |  Presentation On
+            |  Polymer
+          span(class='author') davidv
+
+      // what is page
+      section(class='green', data-bespoke-fx-transition='glue')
+        div
+          h1
+            | What is 
+            strong Polymer
+          p
+            strong Polymer 
+            | is basically a library for creating Web Components. It provides a bunch of 
+            a(href='https://www.google.com.au/search?q=define+polyfills&oq=define+polyfills', target='_blank') polyfills
+            |  that allow us to create custom elements for a wide range of browsers, including those that aren't currently up to date
+            | with standards (once browser support has improved, Polymer's polyfill layer can gradually be removed).
+          p
+            strong Polymer 
+            | believes in leveraging the browser's "native" technologies (such as Shadow DOM), rather than relying on JavaScript to do the heavy lifting
+          p(class='center')
+            em Let's see an example!
+
+      // old way of life
+      section(class='darkgrey', data-bespoke-fx-direction='vertical', data-bespoke-fx-transition='scale-down-out-move-in')
+        div
+          h1 
+            | Life 
+            strong Pre-
+            | Polymer
+          p(class='center') If we wanted to add Google Maps onto the page, we would traditionally do something like this:
+          pre
+            span(class='comment') &lt;!-- Add some styles --><br/>
+            | &lt;style>
+            | #map_canvas {
+            |    width: 500px;
+            |    height: 400px;
+            |    background-color: #CCC;
+            |  }
+            |&lt;/style><br/><br/>
+            span(class='comment') &lt;!-- Add the HTML necessities --><br/>
+            | &lt;div id="map_canvas">&lt;/div><br/><br/>
+            span(class='comment') &lt;!-- Include the script --><br/>
+            | &lt;script src="https://maps.googleapis.com/maps/api/js">&lt;/script></pre>
+          p(class='center') Easy enough, right?
+
+      section(class='darkgrey', data-bespoke-fx-transition='glue')
+        div
+          p(class='center') Oh wait, there's more...
+          pre
+            | &lt;script>
+            |   function initialize() {<br/>
+            span(class='comment')     &#47&#47 Need a reference to the canvas<br/>
+            |     var mapCanvas = document.getElementById('map_canvas');<br/><br/>
+            span(class='comment')     &#47&#47 Provide some options for the map<br/>
+            |     var latLng = new google.maps.LatLng(44.5403, -78.5473)
+            |     var mapOptions = {
+            |       center: latLng,
+            |       zoom: 8,
+            |       mapTypeId: new google.maps.MapTypeId.ROADMAP
+            |     }<br/><br/>
+            span(class='comment')     &#47&#47 Pass the canvas and options to the API<br/>
+            |     var map = new google.map.Maps(mapCanvas);<br/><br/>
+            span(class='comment')     &#47&#47 Now let's add a marker<br/>
+            |     var marker = new google.maps.Marker({
+            |       position: latLng,
+            |       map: map,
+            |       title: 'World Manager Woooo!'
+            |     });
+            |   }<br/><br/>
+            span(class='comment')   &#47&#47 Add initialize to a callback<br/>
+            |   google.maps.event.addDomListener(window, 'load', initialize);
+            | &lt;/script>
+          p(class='center')
+            | We have to delve into the details -- not very declarative.
+            br
+            | I know it's not 
+            strong THAT 
+            | much, but devs are a lazy bunch!
+
+      section(class='blue', data-bespoke-fx-transition='flip')
+        div(style='width: 930px;')
+          h1
+            | Life 
+            strong Beyond
+          p(class='center') We could write a custom element in Polymer where we could do this instead:
+          div(style='width: 960px;')
+            pre(style='display: inline-block; margin-right: 20px; width: 730px;')
+              span(class='comment') &lt;!-- Add some cool maps broooooo --><br/>
+              | &lt;google-map lat="37.790" long="-122.390" 
+              |    zoom="8" mapTypeId="ROADMAP">&lt;/google-map>
+
+              | &lt;google-map lat="-33.420" long="149.625259" 
+              |    zoom="8" mapTypeId="ROADMAP">
+              |    &lt;google-map-marker lat="-33.420" long="149.625259"
+              |      title="World Manager Woooo!">&lt;/google-map-marker>
+              | &lt;/google-map>
+            img(style='display: inline-block; width: 190px; height: 190px; border-radius: 20px;' class='avatar' src='images/nowai.jpg')
+
+      section(class='blue', data-bespoke-fx-direction='vertical', data-bespoke-fx-transition='scale-down-out-move-in')
+        div
+          p(class='center') But of course we'd have to actually write the code to create custom elements.
+
+      section(class='blue', data-bespoke-fx-transition='glue')
+        div
+          h1 Polymer Features
+          p Polymer provides a bunch of elements out of the box. It contains two primary collections (as well as it's Polyfills):
+            ul
+              li The Core Elements (general UI/non-UI elements), such as icons, layouts, toolbars, AJAX, storage
+              li It's "Paper Elements" (UI elements that implement Google's material design)
+          p Also:
+            ul
+              li It supports two-way data-binding (between model and DOM)
+              li You can add touch & gestures relatively easily
+              li Create isolated widgets through HTML5 Web Components (more on that soon)
+
+      section(data-bespoke-fx-transition='glue')
+        div
+          h1 Web Components
+          p 
+            | There is a problem with building widgets currently -- the DOM tree isn't encapsulated from the rest of the
+            | page. This means that the documents stylesheet can accidentally apply to your widget or your javascript could
+            | potentially change your widgets, due to overlapping ID's and classes.
+          p
+            | Web Components addresses this encapsulation problems and allows for us to create isolated widgets that can contain
+            | their own styles and JavaScript code.
+          p Web Components is comprised of four parts:
+            ul
+              li Shadow DOM
+              li Templates
+              li Custom Elements
+              li Packaging
+
+      section(data-bespoke-fx-transition='glue')
+        div
+          h1 Shadow DOM
+          p
+            | Elements now get a new node associated with them, called the 
+            strong shadow root. 
+            | An element that has a shadow root is called a 
+            strong shadow host. The shadow root allows us to add styling/Javascript code to the shadow host. 
+            | It also allows us to create semantic markup without worrying about the implementation details.
+            br
+            pre
+              | &lt;button id="demo1">Hello, world!&lt;/button>
+              | &lt;script>
+              |   var host = document.querySelector('#demo1'),
+              |       root = host.createShadowRoot();
+              |   root.textContent = 'こんにちは、影の世界!';
+              | &lt;/script>
+            br
+            div(class='center')
+              button(id='demo1') Hello, world!
+            script
+              | var host = document.querySelector('#demo1'),
+              |     root = host.createShadowRoot();
+              | root.textContent = 'こんにちは、影の世界!';
+          p(class="center") The content of the shadow host will not be rendered, instead the content of the shadow root will be. 
+
+      section(data-bespoke-fx-transition='glue')
+        div
+          h1 Templates
+          p 
+            | HTML5 introduces the &lt;template> element. It essentially represents a "template", where you can use wherever you want. 
+            | This template will not be rendered to the user, and content within the template won't have side effects until the
+            | template is used (ie. JavaScript code, images don't load).
+          p
+            | This content template is not considered to be part of the main document, meaning you cannot access child nodes of the template
+            | with document.getElementById() or document.querySelector().
+          p
+            | There is also a new &lt;content> element that allows us to create "insertion points" for our content. This allows us to add
+            | elements to our template that are already styled or have code attached to them.
+
+      section(data-bespoke-fx-transition='glue')
+        div
+          pre
+            | &lt;div id="demo2">
+            |   &lt;span id="nameText" class="name" 
+            |       style="color: blue; font-size: 40px; font-weight: bold;">
+            |     David&lt;/span>
+            |   &lt;button>Hello world!&lt;/button>
+            | &ltdiv>
+            | &lt;input id="nameInput">&lt;/input>
+            | &lt;button id="nameUpdateBtn">Update Name!&lt;/button>
+            | 
+            | &lt;template id="demo2Template">
+            |   &lt;style>
+            |     /** ::content is required for content tags **/
+            |     ::content button { color: red; }
+            |     button { color: green; }
+            |   &lt;/style>
+            |   &lt;content select=".name">&lt/content>
+            |   &lt;content>&lt/content>
+            | &lt;/template>
+            | 
+            | &lt;script>
+            |   var shadow = document.querySelector("#demo2").createShadowRoot(),
+            |       template = document.querySelector("#demo2Template"),
+            |       clone = document.importNode(template.content, true);
+            |   shadow.appendChild(clone);
+            | 
+            |   var input = document.querySelector("#nameInput");
+            |   input.addEventListener('change', function() { 
+            |     document.querySelector("#nameText").textContent = input.value;
+            |   });
+            | &lt;/script>
+          div(class='center')
+            div(id='demo2')
+              span(id="nameText" class='name', style="color: blue; font-size: 40px; font-weight: bold;") David
+              button Hello world!
+            template(id='demo2Template')
+              | <style>
+              |   ::content button { color: red; }
+              |   button { color: green; }
+              | </style>
+              | <p>Hello <content select=".name"></content>!</p>
+              | <content></content>
+            input(id="nameInput")
+            button(id="nameUpdateBtn") Update Name!
+            script
+              | var shadow = document.querySelector("#demo2").createShadowRoot(),
+              |     template = document.querySelector("#demo2Template"),
+              |     clone = document.importNode(template.content, true);
+              | shadow.appendChild(clone);
+              | var input = document.querySelector("#nameInput");
+              | input.addEventListener('change', function() { 
+              |   document.querySelector("#nameText").textContent = input.value;
+              | });
+            p
+              | This means we can update the name easily without knowing the structure the widget uses for rendering!
+
+      section(data-bespoke-fx-transition='glue')
+        div
+          h1 Custom Elements
+          p
+            | Custom Elements allows for us to define new HTML elements, where we can logically bundle together functionality
+            | for that element into a single tag. Custom elements also allow extending of other elements, but I won't be talking about that.
+          pre
+            | var proto = Object.create(HTMLElement.prototype);
+            | proto.createdCallback = function() {
+            |   this.innerHTML = "Hello " + this.innerHTML;
+            | };
+            | proto.welcome = function() {
+            | }
+            | document.registerElement('hello-world', {
+            |   prototype: proto
+            | });
+            | 
+            | &lt;hello-world>David&lt;/hello-world>
+          br
+          div(class='center')
+            script
+              | var proto = Object.create(HTMLElement.prototype);
+              | proto.createdCallback = function() {
+              |   this.innerHTML = "Hello " + this.innerHTML;
+              | };
+              | document.registerElement('hello-world', {
+              |   prototype: proto
+              | });
+            hello-world(id='demo3') David
+
+      section(data-bespoke-fx-transition='glue')
+        div
+          p
+            | Paired with Shadow DOM and templating, we can create some real encapsulation.
+          pre
+            | &lt;template id="demo3Template">
+            |   &lt;style>
+            |     :host { color: red !important; }
+            |     ::content span { font-size: 30px; font-weight: bold; }
+            |   &lt;/style>
+            |   &lt;content>&lt;/content>
+            | &lt;/template>
+            | 
+            | &lt;script
+            |   var proto = Object.create(HTMLElement.prototype);
+            |   proto.createdCallback = function() {
+            |     var template = document.querySelector("#demo3Template"),
+            |     clone = document.importNode(template.content, true);
+            |     this.createShadowRoot().appendChild(clone);
+            |   };
+            |   proto.attachedCallback = function() {
+            |     this.innerHTML = "Hello " + this.innerHTML;
+            |   }
+            |   document.registerElement('hello-world2', {
+            |     prototype: proto
+            |   });
+            | &lt;/script>
+            | 
+            | &lt;hello-world2>
+            |   &lt;span>David&lt;/span>
+            | &lt;/hello-world2>
+          br
+          div(class='center')
+            template(id='demo3Template')
+              | <style>
+              |   :host { color: red !important; }
+              |   ::content span { font-size: 30px; font-weight: bold; }
+              | </style>
+              | <content></content>
+            script
+              | var proto = Object.create(HTMLElement.prototype);
+              | proto.createdCallback = function() {
+              |   var template = document.querySelector("#demo3Template"),
+              |       clone = document.importNode(template.content, true);
+              |   this.createShadowRoot().appendChild(clone);
+              | };
+              | proto.attachedCallback = function() {
+              |   this.innerHTML = "Hello " + this.innerHTML;
+              | }
+              | document.registerElement('hello-world2', {
+              |   prototype: proto
+              | });
+            hello-world2 
+              span David
+
+      section(data-bespoke-fx-transition='glue')
+        div
+          h1 Packaging
+          p
+            | Why don't we have a declarative way to include HTML? We can with CSS, Javascript.. well, now we do! Introducing 
+            | HTML imports!
+          pre
+            | &lt;head>
+            |   &lt;link rel="import" href="hello-world2.html">
+            | &lt;/head>
+
+      section(data-bespoke-fx-transition='glue')
+        div
+          p(class="center") 
+            | So basically Polymer provides us with a library that does this all for us under the hood and provides us with callbacks. We 
+            | just need to declare our elements with some Polymer code (also we gotta include the Polymer scripts).
+          br
+          pre
+            | &lt;polymer-element name="hello-world2">
+            |   &lt;template>
+            |     ...
+            |   &lt;/template>
+            |   &lt;script>
+            |    // Register it with Polymer
+            |     Polymer('hello-world2', {
+            |       ready: function() {
+            |         this.innerHTML = "Hello " + this.innerHTML
+            |       }
+            |     });
+            |   &lt;/script>
+            | &lt;polymer-element>
+            | 
+            | &lt;link rel="import" href="hello-world2.html">
+            | &lt;hello-world2>
+            |   &lt;span>David&lt;/span>
+            | &lt;/hello-world2>
+
+      section(class='red', data-bespoke-fx-transition='glue')
+        div
+          h1
+            | Polymer 
+            strong Problems
+          h2 It's not perfect.. yet..
+          p(class='center')
+            ul
+              li As it is still very new, there is a MAJOR lack of documentation
+                ul
+                  li Most built-in elements are not documented, and the only way to know is by sifting through code.
+                  li No guidance on recommended ways to use Polymer in larger applications.
+                  li Error messages are near useless currently
+              li Dependency issues and some bugs!
+                ul
+                  li 
+                    | Polymer is heavily under development and due to that there are many bugs. I found myself
+                    | trying to go through the provided tutorial (which uses Bower) only to find out that the
+                    | packages had bugs! (Although it is fine now).
+              li Compatibility issues
+                ul
+                  li
+                    | Doesn't work on 
+                    strong
+                      em IE8 
+                    | and below!
+                  li
+                    | Works on
+                    strong
+                      em IE9 
+                    | with some workarounds.
+                  li
+                    An now apparently Apple has removed Shadow DOM from Safari?? ...
+              li All the packages and polyfills can be really heavy (especially on mobile devices)
+
+      section(class='black', data-bespoke-fx-transition='glue')
+        div
+          p(class="center")
+            | So Polymer is fun to experiment with for now, but it's probably best not to use it until 
+            | things in the HTML5 world settle down.
+
+      section(class='black', data-bespoke-fx-transition='glue')
+        div(style="width: 600px;")
+          h1 References
+          ul
+            li
+              a(href='https://www.polymer-project.org/', target="_blank") Polymer Project
+            li
+              a(href='https://news.ycombinator.com/item?id=7243122', target="_blank") Apple drops Shadow DOM for Safari
+            li
+              a(href='http://www.google.com/design/spec/material-design/introduction.html', target="_blank") Google's Material Design
+            li
+              a(href='http://www.html5rocks.com/en/tutorials/webcomponents/shadowdom/', target="_blank") Shadow DOM 101
+            li
+              a(href='http://www.html5rocks.com/en/tutorials/webcomponents/template/', target="_blank") Templates
+            li
+              a(href='http://www.html5rocks.com/en/tutorials/webcomponents/customelements/', target="_blank") Custom Elements
+            li
+              a(href='http://www.html5rocks.com/en/tutorials/webcomponents/imports/', target="_blank") HTML Imports
+
+      section(class='black', data-bespoke-fx-transition='glue')
+        p(class="center", style="font-size: 30px;") This presentation was made using 
+          strong Bespoke.js
+
+    script(src='build/build.js')

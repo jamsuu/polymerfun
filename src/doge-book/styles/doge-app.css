@@ -1,0 +1,52 @@
+:host {
+	display: block;
+	width: 200px;
+	height: 200px;
+	background: #eee;
+	font-family: 'RobotoDraft';
+	color: #303030;
+	box-sizing: initial;
+}
+core-header-panel {
+	width: 100%;
+    height: 100%;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch; 
+}
+core-toolbar {
+    background: #03a9f4;
+    color: white;
+}
+#tabs {
+    width: 100%;
+    margin: 0;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+	text-transform: uppercase;
+}
+paper-tabs {
+	width: 100%;
+	height: 100%;
+}
+paper-tab {
+	font-weight: 500;
+}
+paper-tab:hover {
+	cursor: pointer;
+}
+
+.container {
+	padding: 20px 10px;
+}
+
+doge-posts {
+	display: block;
+	margin: 10px 10px;
+}
+
+doge-posts::shadow doge-post {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}

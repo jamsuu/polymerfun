@@ -1,0 +1,41 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/core-icon-button/core-icon-button.html">
+<link rel="import" href="doge-post-service.html">
+<link rel="import" href="doge-post.html">
+
+<polymer-element name="html-echo" attributes="html">
+    <script>
+      Polymer('html-echo', {
+        htmlChanged: function() {
+          this.innerHTML = this.html;
+        }
+      });
+    </script>
+  </polymer-element>
+
+<polymer-element name="doge-posts" attributes="show">
+	<template>
+		<div class="container" layout vertical center>
+			<doge-post-service id="service" posts="{{posts}}"></doge-post-service>
+
+			<template repeat="{{post in posts}}">
+				<doge-post favorite={{post.favorite}} on-favorite-tap="{{handleFavorite}}" hidden?="{{show == 'favorites' && !post.favorite}}">
+					<img src="images/{{post.avatar}}">
+					<h2>{{post.username}}</h2>
+					<html-echo html="{{post.text}}"></html-echo>
+				</doge-post>
+			</template>
+		</div>
+	</template>
+	<script>
+	Polymer({
+		handleFavorite: function(event, detail, sender) {
+	    	var post = sender.templateInstance.model.post;
+	    	this.$.service.setFavorite(post.uid, post.favorite);
+	  	},
+		postChanged: function() {
+			this.$.content.innerHtml = this.post.text
+		}
+	});
+	</script>
+</polymer-element>

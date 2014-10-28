@@ -1,0 +1,234 @@
+{
+  "name": "presentation-polymerfun",
+  "version": "0.0.0",
+  "dependencies": {
+    "prism": "gh-pages",
+    "polymer": "Polymer/polymer#~0.4.2",
+    "core-elements": "Polymer/core-elements#~0.4.2",
+    "paper-elements": "Polymer/paper-elements#~0.4.2"
+  },
+  "overrides": {
+    "polymer": {
+      "main": "polymer.js"
+    },
+    "core-component-page": {
+      "main": "core-component-page.js"
+    },
+    "core-elements": {
+      "main": "core-elements.js"
+    },
+    "core-ajax": {
+      "main": "core-ajax.js"
+    },
+    "core-animated-pages": {
+      "main": "core-animated-pages.js"
+    },
+    "core-selector": {
+      "main": "core-selector.js"
+    },
+    "core-selection": {
+      "main": "core-selection.js"
+    },
+    "core-style": {
+      "main": "core-style.js"
+    },
+    "core-transition": {
+      "main": "core-transition.js"
+    },
+    "core-meta": {
+      "main": "core-meta.js"
+    },
+    "core-animation": {
+      "main": "core-animation.js"
+    },
+    "web-animations-js": {
+      "main": "web-animations-js.js"
+    },
+    "core-collapse": {
+      "main": "core-collapse.js"
+    },
+    "core-doc-viewer": {
+      "main": "core-doc-viewer.js"
+    },
+    "core-menu": {
+      "main": "core-menu.js"
+    },
+    "core-item": {
+      "main": "core-item.js"
+    },
+    "core-icon": {
+      "main": "core-icon.js"
+    },
+    "core-iconset": {
+      "main": "core-iconset.js"
+    },
+    "core-icons": {
+      "main": "core-icons.js"
+    },
+    "core-iconset-svg": {
+      "main": "core-iconset-svg.js"
+    },
+    "core-toolbar": {
+      "main": "core-toolbar.js"
+    },
+    "core-icon-button": {
+      "main": "core-icon-button.js"
+    },
+    "core-media-query": {
+      "main": "core-media-query.js"
+    },
+    "core-header-panel": {
+      "main": "core-header-panel.js"
+    },
+    "context-free-parser": {
+      "main": "context-free-parser.js"
+    },
+    "marked-element": {
+      "main": "marked-element.js"
+    },
+    "marked": {
+      "main": "marked.js"
+    },
+    "prettify-element": {
+      "main": "prettify-element.js"
+    },
+    "core-docs": {
+      "main": "core-docs.js"
+    },
+    "core-drag-drop": {
+      "main": "core-drag-drop.js"
+    },
+    "core-drawer-panel": {
+      "main": "core-drawer-panel.js"
+    },
+    "core-dropdown": {
+      "main": "core-dropdown.js"
+    },
+    "core-overlay": {
+      "main": "core-overlay.js"
+    },
+    "core-dropdown-menu": {
+      "main": "core-dropdown-menu.js"
+    },
+    "core-field": {
+      "main": "core-field.js"
+    },
+    "core-input": {
+      "main": "core-input.js"
+    },
+    "core-layout-grid": {
+      "main": "core-layout-grid.js"
+    },
+    "core-layout-trbl": {
+      "main": "core-layout-trbl.js"
+    },
+    "core-list": {
+      "main": "core-list.js"
+    },
+    "core-localstorage": {
+      "main": "core-localstorage.js"
+    },
+    "core-menu-button": {
+      "main": "core-menu-button.js"
+    },
+    "core-pages": {
+      "main": "core-pages.js"
+    },
+    "core-range": {
+      "main": "core-range.js"
+    },
+    "core-scaffold": {
+      "main": "core-scaffold.js"
+    },
+    "core-scroll-header-panel": {
+      "main": "core-scroll-header-panel.js"
+    },
+    "core-shared-lib": {
+      "main": "core-shared-lib.js"
+    },
+    "core-signals": {
+      "main": "core-signals.js"
+    },
+    "core-splitter": {
+      "main": "core-splitter.js"
+    },
+    "core-tests": {
+      "main": "core-tests.js"
+    },
+    "polymer-test-tools": {
+      "main": "polymer-test-tools.js"
+    },
+    "paper-slider": {
+      "main": "paper-slider.js"
+    },
+    "core-tooltip": {
+      "main": "core-tooltip.js"
+    },
+    "paper-focusable": {
+      "main": "paper-focusable.js"
+    },
+    "paper-fab": {
+      "main": "paper-fab.js"
+    },
+    "paper-icon-button": {
+      "main": "paper-icon-button.js"
+    },
+    "paper-button": {
+      "main": "paper-button.js"
+    },
+    "paper-ripple": {
+      "main": "paper-ripple.js"
+    },
+    "font-roboto": {
+      "main": "font-roboto.js"
+    },
+    "paper-shadow": {
+      "main": "paper-shadow.js"
+    },
+    "sampler-scaffold": {
+      "main": "sampler-scaffold.js"
+    },
+    "paper-elements": {
+      "main": "paper-elements.js"
+    },
+    "paper-checkbox": {
+      "main": "paper-checkbox.js"
+    },
+    "paper-radio-button": {
+      "main": "paper-radio-button.js"
+    },
+    "core-a11y-keys": {
+      "main": "core-a11y-keys.js"
+    },
+    "paper-dialog": {
+      "main": "paper-dialog.js"
+    },
+    "paper-dropdown-menu": {
+      "main": "paper-dropdown-menu.js"
+    },
+    "paper-item": {
+      "main": "paper-item.js"
+    },
+    "paper-input": {
+      "main": "paper-input.js"
+    },
+    "paper-menu-button": {
+      "main": "paper-menu-button.js"
+    },
+    "paper-progress": {
+      "main": "paper-progress.js"
+    },
+    "paper-radio-group": {
+      "main": "paper-radio-group.js"
+    },
+    "paper-tabs": {
+      "main": "paper-tabs.js"
+    },
+    "paper-toast": {
+      "main": "paper-toast.js"
+    },
+    "paper-toggle-button": {
+      "main": "paper-toggle-button.js"
+    }
+  }
+}
